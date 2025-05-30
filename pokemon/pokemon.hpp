@@ -8,11 +8,11 @@ using namespace std;
 class pokemon {
     private:
         string nombre;
-        int experiencia_actual;
+        unsigned int experiencia_actual;
     public:
-        pokemon(string nombre, int experiencia_actual);
+        pokemon(string nombre, unsigned int experiencia_actual);
         string getNombre() const;
-        int getExperienciaActual() const;
+        unsigned int getExperienciaActual() const;
         ~pokemon() = default;
 };
 
