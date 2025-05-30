@@ -15,16 +15,17 @@ map<string, unsigned int> pokemoninfo::getAtaquesDisponiblesPorNivel() const {
 vector<unsigned int> pokemoninfo::getExperienciaProximoNivel() const {
     return experienciaProximoNivel;
 }
-unsigned int pokemoninfo::getsiguientenivel() const {
-    if (experienciaProximoNivel.empty()) {
-        return 0; // Indica que no hay niveles siguientes
-    }
 
-    for (const auto& exp: experienciaProximoNivel) {
-        if (exp > 0) {
-            return exp; 
-            // Retorna el primer nivel con experiencia positiva
-        }
+void pokemoninfo::mostrar() const {
+    cout << "Tipo: " << type << endl;
+    cout << "Descripción: " << descripcion << endl;
+    cout << "Ataques disponibles por nivel:" << endl;
+    for (const auto& ataque : ataquesDisponiblesPorNivel) {
+        cout << "  - " << ataque.first << ": Daño: " << ataque.second << endl;
     }
-    return 0;
+    cout << "Experiencia para próximos niveles: ";
+    for (const auto& exp : experienciaProximoNivel) {
+        cout << exp << " ";
+    }
+    cout << endl;
 }
