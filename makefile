@@ -10,5 +10,5 @@ ej1:
 
 
 clean:
-	rm -f ejercicio1 ejercicio2 ejercicio3 vuelo.bin
+	rm -f ejercicio1 ejercicio2 ejercicio3
 	rm -rf *.dSYM/
