@@ -1,6 +1,8 @@
 #include "headers/pokemon.hpp"
 #include "headers/pokemoninfo.hpp"
 #include "headers/pokedex.hpp"
+#include <iostream>
+#include <fstream>
 
 int main(){
     pokemon Squirtle("Squirtle",100);
@@ -39,6 +41,25 @@ int main(){
 
     cout << "Mostrando un Pokemon desconocido:" << endl;
     pokedex.mostrar(Pikachu);
+
+    ofstream out("pokedex.dat", ios::binary);
+    if (out.is_open()) {
+        pokedex.serealizar(out);
+        out.close();
+        cout << "Pokedex guardada en 'pokedex.dat'." << endl;
+    } else {
+        cerr << "Error al abrir el archivo para guardar la Pokedex." << endl;
+    }
+
+    ifstream in("pokedex.dat", ios::binary);
+    if (in.is_open()) {
+        Pokedex loadedPokedex(in);
+        in.close();
+        cout << "Pokedex cargada desde 'pokedex.dat':" << endl;
+        loadedPokedex.mostrarTodos();
+    } else {
+        cerr << "Error al abrir el archivo para cargar la Pokedex." << endl;
+    }
 
     return 0;
 }

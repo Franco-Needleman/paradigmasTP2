@@ -25,6 +25,8 @@ public:
     vector<unsigned int> getExperienciaProximoNivel() const;
 
     void mostrar() const;
+    void serealizar(ofstream& out) const;
+    void deserealizar(ifstream& in);
 
 };
 

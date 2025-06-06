@@ -1,5 +1,6 @@
 #include "../headers/pokedex.hpp"
 #include <iostream>
+#include <fstream>
 
 size_t PokemonHash::operator()(const pokemon& p) const {
     return hash<string>()(p.getNombre() + to_string(p.getExperienciaActual()));
@@ -7,6 +8,7 @@ size_t PokemonHash::operator()(const pokemon& p) const {
 
 void Pokedex::agregar(const pokemon& p, const pokemoninfo& info) {
     pokedex[p] = info;
+    
 }
 
 void Pokedex::mostrar(const pokemon& p) const {
@@ -27,4 +29,28 @@ void Pokedex::mostrarTodos() const {
         entry.second.mostrar();
         cout << "------------------------" << endl;
     }
+}
+
+void Pokedex::serealizar(ofstream& out) const {
+    size_t size = pokedex.size();
+    out.write(reinterpret_cast<const char*>(&size), sizeof(size));
+    for (const auto& entry : pokedex) {
+        entry.first.serealizar(out);
+        entry.second.serealizar(out);
+    }
+}
+void Pokedex::deserealizar(ifstream& in) {
+    size_t size;
+    in.read(reinterpret_cast<char*>(&size), sizeof(size));
+    for (size_t i = 0; i < size; ++i) {
+        pokemon p;
+        pokemoninfo info;
+        p.deserealizar(in);
+        info.deserealizar(in);
+        pokedex[p] = info;
+    }
+}
+
+Pokedex::Pokedex(ifstream& in) {
+    deserealizar(in);
 }
