@@ -12,11 +12,11 @@ struct PokemonHash {
 
 class Pokedex {
 private:
-    
+    string nombre_archivo;
     unordered_map<pokemon, pokemoninfo, PokemonHash> pokedex;
 public:
     Pokedex(ifstream& in);
-    Pokedex() = default;
+    Pokedex();
     ~Pokedex() = default;
     void agregar(const pokemon& p, const pokemoninfo& info);
     void mostrar(const pokemon& p) const;

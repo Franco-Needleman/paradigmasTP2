@@ -2,13 +2,19 @@
 #include <iostream>
 #include <fstream>
 
+Pokedex::Pokedex() : nombre_archivo("pokedex.dat") {}
+
 size_t PokemonHash::operator()(const pokemon& p) const {
     return hash<string>()(p.getNombre() + to_string(p.getExperienciaActual()));
 }
 
 void Pokedex::agregar(const pokemon& p, const pokemoninfo& info) {
     pokedex[p] = info;
-    
+    ofstream out(nombre_archivo, ios::binary | ios::trunc);
+    if (out.is_open()){
+        this->serealizar(out);
+        out.close();
+    }
 }
 
 void Pokedex::mostrar(const pokemon& p) const {
@@ -51,6 +57,6 @@ void Pokedex::deserealizar(ifstream& in) {
     }
 }
 
-Pokedex::Pokedex(ifstream& in) {
+Pokedex::Pokedex(ifstream& in) : nombre_archivo("pokedex.dat") { 
     deserealizar(in);
 }
