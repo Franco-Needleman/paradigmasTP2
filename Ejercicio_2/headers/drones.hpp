@@ -13,5 +13,6 @@ public:
     Drones() = default;
     ~Drones() = default;
     void despegar(int drone);
+    bool falta_despegar();
     void simularVuelos();
 };

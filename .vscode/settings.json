@@ -1,6 +1,7 @@
 {
     "files.associations": {
+        "thread": "cpp",
         "iostream": "cpp",
-        "thread": "cpp"
+        "cppStandar": "C++20"
     }
 }
