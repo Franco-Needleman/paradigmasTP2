@@ -47,7 +47,6 @@ void Drones::simularVuelos(){
         }
         vuelos.push_back(jthread(&Drones::despegar, this, despegando)); 
         despegaron.push_back(despegando);
-        cout<<i<<endl;
     }
     
 }
