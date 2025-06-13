@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/llopresti/Desktop/paradigmasTP2/Ejercicio_3/main3.cpp" "CMakeFiles/ejercicio3.dir/main3.cpp.o" "gcc" "CMakeFiles/ejercicio3.dir/main3.cpp.o.d"
+  "/home/paradigmas/paradigmasTP2/Ejercicio_3/main3.cpp" "CMakeFiles/ejercicio3.dir/main3.cpp.o" "gcc" "CMakeFiles/ejercicio3.dir/main3.cpp.o.d"
   )
 
 # Targets to which this target links.

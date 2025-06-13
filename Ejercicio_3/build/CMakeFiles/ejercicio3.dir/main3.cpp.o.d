@@ -1,5 +1,5 @@
 CMakeFiles/ejercicio3.dir/main3.cpp.o: \
- /home/llopresti/Desktop/paradigmasTP2/Ejercicio_3/main3.cpp \
+ /home/paradigmas/paradigmasTP2/Ejercicio_3/main3.cpp \
  /usr/include/stdc-predef.h /usr/include/c++/11/thread \
  /usr/include/c++/11/compare /usr/include/c++/11/concepts \
  /usr/include/c++/11/type_traits \

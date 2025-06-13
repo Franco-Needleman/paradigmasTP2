@@ -14,6 +14,9 @@ struct Tarea {
     string descripcionTarea;
 };
 
+int numeroTareas = 1; 
+mutex  mutexTareas;
+mutex terminal;
 queue<Tarea> colaTareas;
 mutex mutexCola;
 condition_variable cvCola;
@@ -27,14 +30,19 @@ void sensor(int idSensor, int cantidadTareas) {
         // Crear la tarea
         Tarea tarea;
         tarea.idSensor = idSensor;
-        tarea.idTarea = i + 1;
-        tarea.descripcionTarea = "Tarea generada por sensor " + to_string(idSensor) + ", número " + to_string(i + 1);
+        mutexTareas.lock();
+        tarea.idTarea = numeroTareas ;
+        numeroTareas++;
+        mutexTareas.unlock();
+        tarea.descripcionTarea = "Tarea con descripcion general generada por sensor " + to_string(idSensor) + ", número " + to_string(i + 1);
         // Agregar la tarea a la cola compartida
         lock_guard<mutex> lock(mutexCola);
         colaTareas.push(tarea);
+        terminal.lock();
         cout << "[Sensor " << idSensor << "] Generó tarea " << tarea.idTarea << endl;
+        terminal.unlock();
         // Notificar a los robots que hay una nueva tarea
-        cvCola.notify_one();
+        cvCola.notify_all();
     }
 }
 
@@ -54,10 +62,11 @@ void robot(int idRobot) {
         if (!colaTareas.empty()) {
             Tarea tarea = colaTareas.front();
             colaTareas.pop();
-
+            terminal.lock();
             // Imprimir mensaje de procesamiento (dentro del lock para evitar superposición)
             cout << "[Robot " << idRobot << "] Procesando tarea " << tarea.idTarea
                  << " del sensor " << tarea.idSensor << ": " << tarea.descripcionTarea << endl;
+            terminal.unlock();
 
             // Liberar el lock antes de procesar (para que otros robots puedan acceder a la cola)
             lock.unlock();
@@ -67,8 +76,9 @@ void robot(int idRobot) {
         }
     }
     // Mensaje de finalización (opcional, también protegido por el lock)
-    unique_lock<mutex> lock(mutexCola);
+    terminal.lock();
     cout << "[Robot " << idRobot << "] Finalizó su trabajo" << endl;
+    terminal.unlock();
 }
 
 int main() {
@@ -94,7 +104,7 @@ int main() {
     }
 
     // Avisar a los robots que los sensores han finalizado
-    lock_guard<mutex> lock(mutexCola);
+    //lock_guard<mutex> lock(mutexCola);
     sensoresFinalizados = true;
     cvCola.notify_all();
 
@@ -103,6 +113,8 @@ int main() {
         robots[i].join();
     }
 
+    terminal.lock();
     cout << "Todos los sensores y robots han finalizado." << endl;
+    terminal.unlock();
     return 0;
 }
