@@ -34,6 +34,16 @@ int main(){
     pokedex.agregar(Bulbasaur, BulbasaurInfo);
     pokedex.agregar(Charmander, CharmanderInfo);
 
+    // Guardar la Pokedex en el archivo
+    ofstream out("data/pokedex.dat", ios::binary);
+    if (out.is_open()) {
+        pokedex.serealizar(out);
+        out.close();
+        cout << "Pokedex guardada exitosamente en 'data/pokedex.dat'" << endl;
+    } else {
+        cerr << "Error al abrir el archivo para guardar la Pokedex." << endl;
+    }
+
     cout << "Mostrando todos los Pokemon en la Pokedex:" << endl;
     pokedex.mostrarTodos();
     cout << endl;
@@ -45,7 +55,7 @@ int main(){
     cout << "Mostrando un Pokemon desconocido:" << endl;
     pokedex.mostrar(Pikachu);
 
-    ifstream in("pokedex.dat", ios::binary);
+    ifstream in("../data/pokedex.dat", ios::binary);
     if (in.is_open()) {
         Pokedex loadedPokedex(in);
         in.close();

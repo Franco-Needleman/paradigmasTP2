@@ -1,5 +1,6 @@
 #include "../headers/pokemoninfo.hpp"
 #include <fstream>
+
 pokemoninfo::pokemoninfo(string type, string descripcion, map<string,unsigned int> ataquesDisponiblesPorNivel, vector<unsigned int> experienciaProximoNivel)
     : type(type), descripcion(descripcion), ataquesDisponiblesPorNivel(ataquesDisponiblesPorNivel), experienciaProximoNivel(experienciaProximoNivel) {}
 

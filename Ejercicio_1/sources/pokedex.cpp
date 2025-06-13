@@ -10,7 +10,7 @@ size_t PokemonHash::operator()(const pokemon& p) const {
 
 void Pokedex::agregar(const pokemon& p, const pokemoninfo& info) {
     pokedex[p] = info;
-    ofstream out(nombre_archivo, ios::binary | ios::trunc);
+    ofstream out("../data/" + nombre_archivo, ios::binary | ios::trunc);
     if (out.is_open()){
         this->serealizar(out);
         out.close();
