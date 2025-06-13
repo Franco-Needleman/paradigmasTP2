@@ -12,7 +12,7 @@ unsigned int pokemon::getExperienciaActual() const {
 }
 
 bool pokemon::operator==(const pokemon& otro) const {
-    return nombre == otro.nombre && experiencia_actual == otro.experiencia_actual;
+    return nombre == otro.nombre ;
 }
 
 void pokemon::serealizar(ofstream& out) const {

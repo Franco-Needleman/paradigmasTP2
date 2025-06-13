@@ -5,7 +5,7 @@
 Pokedex::Pokedex() : nombre_archivo("pokedex.dat") {}
 
 size_t PokemonHash::operator()(const pokemon& p) const {
-    return hash<string>()(p.getNombre() + to_string(p.getExperienciaActual()));
+    return hash<string>()(p.getNombre() );//+ to_string(p.getExperienciaActual()));
 }
 
 void Pokedex::agregar(const pokemon& p, const pokemoninfo& info) {
@@ -19,7 +19,7 @@ void Pokedex::agregar(const pokemon& p, const pokemoninfo& info) {
 
 void Pokedex::mostrar(const pokemon& p) const {
     auto it = pokedex.find(p);
-    if (it != pokedex.end()) {
+    if (it != pokedex.end() && p.getNombre() == it->first.getNombre()) {
         cout << "Pokemon: " << p.getNombre() << endl;
         cout << "Experiencia Actual: " << p.getExperienciaActual() << endl;
         it->second.mostrar();

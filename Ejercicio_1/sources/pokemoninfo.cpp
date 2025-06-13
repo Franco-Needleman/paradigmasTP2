@@ -24,11 +24,18 @@ void pokemoninfo::mostrar() const {
     for (const auto& ataque : ataquesDisponiblesPorNivel) {
         cout << "  - " << ataque.first << ": Daño: " << ataque.second << endl;
     }
-    cout << "Experiencia para próximos niveles: ";
-    for (const auto& exp : experienciaProximoNivel) {
-        cout << exp << " ";
+    /*
+    for (int i=0; i < 3; ++i) {
+        if (i > 0){
+            cout <<"Experiencia necesaria para nivel "<< i+1 << ": " << experienciaProximoNivel[i];
+            break;
+        }
+        if (experienciaProximoNivel[2]==0){
+            cout << "nivel maximo (3)";
+            break;
+        }
     }
-    cout << endl;
+    cout << endl;*/
 }
 
 void pokemoninfo::serealizar(ofstream& out) const {

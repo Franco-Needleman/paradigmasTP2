@@ -39,6 +39,9 @@ int main(){
     cout << endl;
     pokemon Pikachu("Pikachu", 500);
 
+    cout << "Mostrando un Pokemon conocido:" << endl;
+    pokedex.mostrar(pokemon("Squirtle",870));
+
     cout << "Mostrando un Pokemon desconocido:" << endl;
     pokedex.mostrar(Pikachu);
 
