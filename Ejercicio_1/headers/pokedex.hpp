@@ -21,6 +21,7 @@ public:
     void agregar(const pokemon& p, const pokemoninfo& info);
     void mostrar(const pokemon& p) const;
     void mostrarTodos() const;
+    void imprimir_exp(const pokemon& p, const pokemoninfo& pinf) const;
     void serealizar(ofstream& out) const;
     void deserealizar(ifstream& in);
 }; 

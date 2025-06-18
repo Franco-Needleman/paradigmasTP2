@@ -2,7 +2,8 @@
   "files.associations": {
     "iostream": "cpp",
     "iosfwd": "cpp",
-    "thread": "cpp"
+    "thread": "cpp",
+    "ostream": "cpp"
   },
   "C_Cpp_Runner.msvcBatchPath": "",
   "cppStandard": "C++20"

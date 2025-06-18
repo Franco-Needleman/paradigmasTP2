@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/ejercicio1.dir/main1.cpp.o CMakeFiles/ejercicio1.dir/sources/pokedex.cpp.o CMakeFiles/ejercicio1.dir/sources/pokemon.cpp.o CMakeFiles/ejercicio1.dir/sources/pokemoninfo.cpp.o -o ejercicio1 
