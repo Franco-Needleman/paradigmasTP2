@@ -5,10 +5,11 @@
 #include <fstream>
 
 int main(){
+    // Crear Pokemon con su informacion basica
     pokemon Squirtle("Squirtle",100);
     pokemoninfo SquirtleInfo(
         "Agua",
-        "Una tortuga pequeña que lanza chorros de agua.",
+        "Una tortuga pequena que lanza chorros de agua.",
         {{"Pistola Agua",4}, {"Hidrobomba",6}, {"Danza Lluvia",5}},
         {0, 400, 1000}
     );
@@ -29,22 +30,26 @@ int main(){
         {0, 250, 1300}
     );
 
+    // Crear Pokedex y agregar los Pokemon
     Pokedex pokedex;
     pokedex.agregar(Squirtle, SquirtleInfo);
     pokedex.agregar(Bulbasaur, BulbasaurInfo);
     pokedex.agregar(Charmander, CharmanderInfo);
 
+    // Mostrar todos los Pokemon en la Pokedex
     cout << "Mostrando todos los Pokemon en la Pokedex:" << endl;
     pokedex.mostrarTodos();
     cout << endl;
     pokemon Pikachu("Pikachu", 500);
 
+    // Probar busqueda de Pokemon conocido y desconocido
     cout << "Mostrando un Pokemon conocido:" << endl;
     pokedex.mostrar(pokemon("Squirtle",870));
 
     cout << "Mostrando un Pokemon desconocido:" << endl;
     pokedex.mostrar(Pikachu);
 
+    // Cargar Pokedex desde archivo para demostrar persistencia
     ifstream in("pokedex.dat", ios::binary);
     if (in.is_open()) {
         Pokedex loadedPokedex(in);
