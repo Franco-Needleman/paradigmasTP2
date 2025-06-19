@@ -50,7 +50,7 @@ int main(){
     pokedex.mostrar(Pikachu);
 
     // Cargar Pokedex desde archivo para demostrar persistencia
-    ifstream in("pokedex.dat", ios::binary);
+    ifstream in("../data/pokedex.dat", ios::binary);
     if (in.is_open()) {
         Pokedex loadedPokedex(in);
         in.close();

@@ -33,7 +33,6 @@ public:
     void imprimir_exp(const pokemon& p, const pokemoninfo& pinf) const;
     
     // Serializa/deserializa toda la Pokedex
-    void imprimir_exp(const pokemon& p, const pokemoninfo& pinf) const;
     void serealizar(ofstream& out) const;
     void deserealizar(ifstream& in);
 }; 
