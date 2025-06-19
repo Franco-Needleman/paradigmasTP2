@@ -58,6 +58,9 @@ void Pokedex::mostrar(const pokemon& p) const {
 void Pokedex::mostrarTodos() const {
     for (const auto& entry : pokedex) {
         cout << "Pokemon: " << entry.first.getNombre() << endl;//no se reutiliza la funcion mostrar pq esta itera devuelta en el map y es menos eficiente
+
+        cout << "Pokemon: " << entry.first.getNombre() << endl;// No se reutiliza la funcion mostrar pq esta itera devuelta en el map y es menos eficiente
+
         cout << "Experiencia Actual: " << entry.first.getExperienciaActual() << endl;
         entry.second.mostrar();
         imprimir_exp(entry.first,entry.second);
