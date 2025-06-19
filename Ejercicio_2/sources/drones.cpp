@@ -2,7 +2,6 @@
 #include <thread>
 #include <chrono>
 #include <iostream>
-#include <random>
 #include <algorithm>
 #include <vector>
 
@@ -11,13 +10,13 @@ void Drones::despegar(int dron){
     terminal.lock();
     cout << "Dron " << dron << " esperando para despegar..." << endl;
     terminal.unlock();
-
+    //doble lock para evitar deadlock
     lock(areas[dron], areas[(dron+1)%5]);
 
     terminal.lock();
     cout << "Dron " << dron << " despegando..." << endl;
     terminal.unlock();
-
+    
     this_thread::sleep_for(chrono::seconds(5));
 
     terminal.lock();
@@ -32,15 +31,10 @@ void Drones::simularVuelos(){
     vector<jthread> vuelos;
     vector<int> despegaron;
     
-
-    srand(time(NULL));
+    
+    // no hace falta un random porque los threads se ejecutan en paralelo y no hay orden garantizado
     for(int i=0;i<5;i++){
-        int despegando = rand()%5;
-        while( find(despegaron.begin(), despegaron.end(), despegando) != despegaron.end()){
-            despegando = rand()%5;
-        }
-        vuelos.push_back(jthread(&Drones::despegar, this, despegando)); 
-        despegaron.push_back(despegando);
+        vuelos.push_back(jthread(&Drones::despegar, this, i)); 
     }
     
 }

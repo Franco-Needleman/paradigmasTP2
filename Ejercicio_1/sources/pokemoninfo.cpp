@@ -33,18 +33,6 @@ void pokemoninfo::mostrar() const {
     for (const auto& ataque : ataquesDisponiblesPorNivel) {
         cout << "  - " << ataque.first << ": Dano: " << ataque.second << endl;
     }
-    /*
-    for (int i=0; i < 3; ++i) {
-        if (i > 0){
-            cout <<"Experiencia necesaria para nivel "<< i+1 << ": " << experienciaProximoNivel[i];
-            break;
-        }
-        if (experienciaProximoNivel[2]==0){
-            cout << "nivel maximo (3)";
-            break;
-        }
-    }
-    cout << endl;*/
 }
 
 // Serializa todos los datos: tipo, descripcion, ataques y experiencia

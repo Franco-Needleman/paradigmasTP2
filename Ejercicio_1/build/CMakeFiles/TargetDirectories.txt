@@ -1,3 +1,0 @@
-/home/paradigmas/paradigmasTP2/Ejercicio_1/build/CMakeFiles/ejercicio1.dir
-/home/paradigmas/paradigmasTP2/Ejercicio_1/build/CMakeFiles/edit_cache.dir
-/home/paradigmas/paradigmasTP2/Ejercicio_1/build/CMakeFiles/rebuild_cache.dir
