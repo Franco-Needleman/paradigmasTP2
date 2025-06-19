@@ -20,10 +20,9 @@ void Pokedex::agregar(const pokemon& p, const pokemoninfo& info) {
     }
 }
 
-<<<<<<< HEAD
-=======
+
 // Calcula el nivel actual y experiencia necesaria para subir de nivel
->>>>>>> ed658d8c4d4cb6395fdf6381b271f019c9b86a8f
+
 void Pokedex::imprimir_exp(const pokemon& p, const pokemoninfo& pinf) const { // para poder reutilizarla
     vector<unsigned int> experienciaProximoNivel = pinf.getExperienciaProximoNivel();
     unsigned int exp =p.getExperienciaActual();
@@ -40,10 +39,9 @@ void Pokedex::imprimir_exp(const pokemon& p, const pokemoninfo& pinf) const { //
     }
 }
 
-<<<<<<< HEAD
-=======
+
 // Muestra informacion completa de un Pokemon especifico
->>>>>>> ed658d8c4d4cb6395fdf6381b271f019c9b86a8f
+
 void Pokedex::mostrar(const pokemon& p) const {
     auto it = pokedex.find(p);
     if (it != pokedex.end() && p.getNombre() == it->first.getNombre()) {
@@ -59,11 +57,8 @@ void Pokedex::mostrar(const pokemon& p) const {
 // Muestra informacion de todos los Pokemon en la Pokedex
 void Pokedex::mostrarTodos() const {
     for (const auto& entry : pokedex) {
-<<<<<<< HEAD
         cout << "Pokemon: " << entry.first.getNombre() << endl;//no se reutiliza la funcion mostrar pq esta itera devuelta en el map y es menos eficiente
-=======
         cout << "Pokemon: " << entry.first.getNombre() << endl;// No se reutiliza la funcion mostrar pq esta itera devuelta en el map y es menos eficiente
->>>>>>> ed658d8c4d4cb6395fdf6381b271f019c9b86a8f
         cout << "Experiencia Actual: " << entry.first.getExperienciaActual() << endl;
         entry.second.mostrar();
         imprimir_exp(entry.first,entry.second);
